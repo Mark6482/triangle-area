@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор площади треугольника</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <style>
+    
+    body {
+      background-color: #f2efe7;
+      font-family: 'Arial', sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      padding-bottom: 60px;
+    }
+   
+    header {
+      background-color: #FFF9C4; 
+      color: #333;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+   
+    section {
+      max-width: 600px;
+      margin: 2rem auto;
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid #FFF9C4; 
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+    
+    label, p {
+      color: #555;
+      font-weight: 600;
+    }
+   
+    .btn-custom {
+      background-color: #FDD835; 
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.6rem 1.2rem;
+      color: #fff;
+    }
+    .btn-custom:hover {
+      background-color: #FBC02D;
+    }
+   
+    footer {
+      background-color: #FFF9C4;
+      color: #333;
+      text-align: center;
+      padding: 0.8rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Математический калькулятор треугольника</h1>
+  </header>
+  
+  <section>
+    <form action="{% url 'triangle-area' %}" method="post">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="first_side" class="form-label">Первая сторона:</label>
+        {{ form.first_side }}
+      </div>
+      
+      <div class="mb-3">
+        <label for="second_side" class="form-label">Вторая сторона:</label>
+        {{ form.second_side }}
+      </div>
+      
+      <div class="mb-3">
+        <label for="third_side" class="form-label">Третья сторона:</label>
+        {{ form.third_side }}
+      </div>
+      
+      <div class="mb-3">
+        <input type="submit" class="btn btn-custom" value="Рассчитать площадь">
+      </div>
+      
+      <div class="mt-4">
+        <h3>Площадь: <span style="color: #F57F17;">{{ area }}</span></h3>
+      </div>
+    </form>
+  </section>
+  
+  <footer>
+    &copy; 2025 Математический калькулятор
+  </footer>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</body>
+</html>
